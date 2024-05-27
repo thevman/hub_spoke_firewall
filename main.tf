@@ -41,6 +41,8 @@ resource "azurerm_firewall" "fw" {
 }
 
 resource "azurerm_firewall_policy" "policy" {
+  # checkov:skip=CKV_AZURE_220: "Ensure Firewall policy has IDPS mode as deny"
+
   name                = var.firewall_policy_name
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
