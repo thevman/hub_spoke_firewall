@@ -1,0 +1,6 @@
+resource_group_name = "myResourceGroup"
+location            = "canadacentral"
+hub_vnet_name       = "hubVnet"
+spoke_vnet_name     = "spokeVnet"
+firewall_name       = "myFirewall"
+public_ip_name      = "myPublicIP"
