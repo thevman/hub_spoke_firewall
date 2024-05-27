@@ -1,0 +1,22 @@
+name: 'Terraform Drift Detection'
+
+on:
+  workflow_dispatch: 
+  schedule:
+    - cron: '41 3 * * *' # runs nightly at 3:41 am
+
+permissions:
+  id-token: write
+  contents: read
+  issues: write
+    
+jobs:
+  Plan:
+    strategy:
+      matrix:
+        targetEnv : ["prod"]
+      fail-fast: false
+    uses: ca-yorku-uit-shared/templates/.github/workflows/tf-drift.yml@release/v1.0
+    with:
+      targetEnv: ${{ matrix.targetEnv }}
+    secrets: inherit

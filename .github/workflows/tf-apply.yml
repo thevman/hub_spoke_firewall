@@ -1,0 +1,21 @@
+name: 'Terraform Deployment'
+run-name: Deploy to ${{ github.ref == 'refs/heads/main' && 'dev' || inputs.targetEnv }} from ${{github.ref_type}} "${{github.ref_name }}" by @${{ github.actor }}
+
+on:
+  push:
+    branches:
+      - main
+            
+permissions:
+  id-token: write
+  contents: read
+      
+jobs:
+  deploy:
+    name: Deploy "prod"
+    uses: yorkutest-shared/templates/.github/workflows/tf-complete-with-github-runner.yml@main
+    with:
+      targetEnv: "prod"
+      deploymentType: "Create"
+      useSSHKey: true
+    secrets: inherit

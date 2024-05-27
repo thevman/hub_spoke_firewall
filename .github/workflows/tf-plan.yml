@@ -1,0 +1,27 @@
+name: 'Terraform Planning'
+run-name: Plan from ${{github.ref_type}} "${{github.ref_name }}" by @${{ github.actor }}
+
+on:
+  push:
+    tags:
+      - 'release/*'
+    branches-ignore:
+      - 'main'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+
+  Plan:
+    strategy:
+      matrix:
+        targetEnv : ["prod"]
+    uses: yorkutest-shared/templates/.github/workflows/tf-complete-with-github-runner.yml@main
+    with:
+      targetEnv: ${{ matrix.targetEnv }}
+      deploymentType: "Plan"
+      useSSHKey: true 
+    secrets: inherit
+  
