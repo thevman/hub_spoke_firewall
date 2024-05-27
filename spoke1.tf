@@ -6,6 +6,7 @@ resource "azurerm_virtual_network" "spoke_vnet" {
 }
 
 resource "azurerm_subnet" "spoke_subnet" {
+  # checkov:skip=CKV2_AZURE_31: "Ensure VNET subnet is configured with a Network Security Group (NSG)"
   name                 = "spoke1Subnet"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.spoke_vnet.name

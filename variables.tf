@@ -45,3 +45,10 @@ variable "spoke_subnet_address_prefixes" {
   type        = list(string)
   default     = ["10.1.0.0/24"]
 }
+
+variable "firewall_policy_name" {
+  description = "The name of the firewall policy"
+  default     = "myFirewallPolicy"
+  type        = string
+
+}

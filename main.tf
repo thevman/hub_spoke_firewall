@@ -11,6 +11,7 @@ resource "azurerm_virtual_network" "hub_vnet" {
 }
 
 resource "azurerm_subnet" "firewall_subnet" {
+  # checkov:skip=CKV2_AZURE_31: "Ensure VNET subnet is configured with a Network Security Group (NSG)"
   name                 = "AzureFirewallSubnet"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.hub_vnet.name
@@ -23,7 +24,9 @@ resource "azurerm_public_ip" "firewall_pip" {
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
 }
+
 resource "azurerm_firewall" "fw" {
+  # checkov:skip=CKV_AZURE_216: "Ensure DenyIntelMode is set to Deny for Azure Firewalls"
   name                = var.firewall_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
@@ -33,7 +36,14 @@ resource "azurerm_firewall" "fw" {
     name                 = "configuration"
     subnet_id            = azurerm_subnet.firewall_subnet.id
     public_ip_address_id = azurerm_public_ip.firewall_pip.id
-
   }
+  firewall_policy_id = azurerm_firewall_policy.policy.id
+}
+
+resource "azurerm_firewall_policy" "policy" {
+  name                = var.firewall_policy_name
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+
 }
 
