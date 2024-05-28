@@ -1,3 +1,4 @@
+
 variable "resource_group_name" {
   description = "The name of the resource group"
   default     = "myResourceGroup"
@@ -61,6 +62,11 @@ variable "spoke1_subnet_address_prefixes" {
 }
 
 // DNS Spoke variables
+variable "dns_subscription_id" {
+  description = "The subscription ID for the DNS spoke"
+  type        = string
+
+}
 variable "dns_spoke_resource_group_name" {
   description = "The name of the spoke resource group"
   default     = "mydns_spokeResourceGroup"
@@ -85,8 +91,8 @@ variable "dns_spoke_inbound_subnet_address_prefixes" {
   default     = ["10.2.0.0/24"]
 }
 
-variable "dns_spoke_outbound_subnet_address_prefixes" {
-  description = "Address prefixes for the spoke subnet"
-  type        = list(string)
-  default     = ["10.2.1.0/24"]
-}
+# variable "dns_spoke_outbound_subnet_address_prefixes" {
+#   description = "Address prefixes for the spoke subnet"
+#   type        = list(string)
+#   default     = ["10.2.1.0/24"]
+# }
