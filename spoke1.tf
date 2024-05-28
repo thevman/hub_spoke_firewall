@@ -47,9 +47,9 @@ resource "azurerm_route_table" "rt" {
     next_hop_in_ip_address = azurerm_firewall.fw.ip_configuration[0].private_ip_address
   }
   route {
-    name                   = "fwip"
-    address_prefix         = "52.237.27.95/32"
-    next_hop_type          = "Internet"
+    name           = "fwip"
+    address_prefix = "52.237.27.95/32"
+    next_hop_type  = "Internet"
   }
   tags = var.tags
 }
