@@ -6,10 +6,10 @@ public_ip_name      = "myPublicIP"
 tags = {
   "Owner" = "Vineet1"
 }
-spoke1_resource_group_name = "Spoke1ResourceGroup"
-spoke1_vnet_name           = "spoke1Vnet"
-spoke1_address_space = ["10.1.0.0/16"]
-spoke1_subnet_address_prefixes= ["10.1.0.0/24"]
+spoke1_resource_group_name     = "Spoke1ResourceGroup"
+spoke1_vnet_name               = "spoke1Vnet"
+spoke1_address_space           = ["10.1.0.0/16"]
+spoke1_subnet_address_prefixes = ["10.1.0.0/24"]
 
 
 // Dns spoke variables
