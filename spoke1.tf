@@ -8,7 +8,7 @@ resource "azurerm_virtual_network" "spoke_vnet" {
   location            = azurerm_resource_group.spoke1_rg.location
   resource_group_name = azurerm_resource_group.spoke1_rg.name
   address_space       = var.spoke1_address_space
-  dns_servers         = [azurerm_private_dns_resolver_inbound_endpoint.example.ip_configurations[0].private_ip_address]
+  dns_servers         = [azurerm_private_dns_resolver_inbound_endpoint.example.ip_configurations[0].private_ip_address, azurerm_private_dns_resolver_inbound_endpoint.example.ip_configurations[1].private_ip_address]
 }
 
 resource "azurerm_subnet" "spoke_subnet" {

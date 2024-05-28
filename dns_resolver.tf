@@ -95,6 +95,10 @@ resource "azurerm_private_dns_resolver_inbound_endpoint" "example" {
     private_ip_allocation_method = "Dynamic"
     subnet_id                    = azurerm_subnet.dns_spoke_inbound_subnet.id
   }
+  ip_configurations {
+    private_ip_allocation_method = "Dynamic"
+    subnet_id                    = azurerm_subnet.dns_spoke_inbound_subnet.id
+  }
 }
 
 resource "azurerm_private_dns_zone" "example" {
