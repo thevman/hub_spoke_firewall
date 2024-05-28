@@ -61,7 +61,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
     rule {
       destination_fqdns = ["*github.com", "*githubusercontent.com"]
       name              = "Allow-github"
-      source_addresses  = ["10.82.0.0/16"]
+      source_addresses  = var.spoke1_address_space
       protocols {
         port = 443
         type = "Https"
@@ -70,7 +70,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
     rule {
       destination_fqdns = ["*.docker.com"]
       name              = "Allow-Docker"
-      source_addresses  = ["10.82.0.0/16"]
+      source_addresses  = var.spoke1_address_space
       protocols {
         port = 443
         type = "Https"
@@ -79,7 +79,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
     rule {
       destination_fqdns = ["apt.releases.hashicorp.com", "releases.hashicorp.com", "registry.terraform.io", "pypi.org", "files.pythonhosted.org", "api0.prismacloud.io", "www.bridgecrew.cloud"]
       name              = "VM-runner-terraformdeployment"
-      source_addresses  = ["10.82.132.0/24"]
+      source_addresses  = var.spoke1_address_space
       protocols {
         port = 443
         type = "Https"
@@ -88,7 +88,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
     rule {
       destination_fqdns = ["mcr.microsoft.com", "*.data.mcr.microsoft.com", "ghcr.io", "management.azure.com", "*.blob.core.windows.net", "k8s.gcr.io", "storage.googleapis.com", "registry.k8s.io", "*.docker.io", "kubernetes.github.io", "login.microsoftonline.com", "us-east4-docker.pkg.dev", "*.azureedge.net", "vault.azure.net", "acs-mirror.azureedge.net"]
       name              = "k8s-runner-cc-01-Https"
-      source_addresses  = ["10.82.132.128/25"]
+      source_addresses  = var.spoke1_address_space
       protocols {
         port = 443
         type = "Https"
@@ -110,7 +110,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
     rule {
       destination_fqdns = ["production.cloudflare.docker.com"]
       destination_ports = ["*"]
-      name              = "k8s-runner-cc-01-Any"
+      name              = "k8s-runner-cc-01-docker"
       protocols         = ["Any"]
       source_addresses  = var.spoke1_subnet_address_prefixes
     }
