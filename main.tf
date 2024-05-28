@@ -68,7 +68,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
     rule {
       destination_fqdns = ["AzureKubernetesService"]
       name              = "VM-runner-api-fqdn"
-      source_addresses  = var.spoke1_address_space
+      source_addresses  = ["*"]
       protocols {
         port = 443
         type = "Https"
@@ -126,35 +126,35 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
       destination_ports = ["1194"]
       name              = "VM-runner-apiudp"
       protocols         = ["UDP"]
-      source_addresses  = var.spoke1_subnet_address_prefixes
+      source_addresses  = ["*"]
     }
     rule {
       destination_fqdns = ["AzureCloud.canadacentral"]
       destination_ports = ["9000"]
       name              = "VM-runner-apitcp"
       protocols         = ["TCP"]
-      source_addresses  = var.spoke1_subnet_address_prefixes
+      source_addresses  = ["*"]
     }
     rule {
       destination_fqdns = ["ntp.ubuntu.com"]
       destination_ports = ["123"]
       name              = "VM-runner-time"
       protocols         = ["UDP"]
-      source_addresses  = var.spoke1_subnet_address_prefixes
+      source_addresses  = ["*"]
     }
     rule {
       destination_fqdns = ["ghcr.io", "pkg-containers.githubusercontent.com"]
       destination_ports = ["123"]
       name              = "VM-runner-ghcr"
       protocols         = ["TCP"]
-      source_addresses  = var.spoke1_subnet_address_prefixes
+      source_addresses  = ["*"]
     }
     rule {
       destination_fqdns = ["docker.io", "registry-1.docker.io", "production.cloudflare.docker.com"]
       destination_ports = ["123"]
       name              = "VM-runner-docker"
       protocols         = ["TCP"]
-      source_addresses  = var.spoke1_subnet_address_prefixes
+      source_addresses  = ["*"]
     }
     # rule {
     #   destination_fqdns = ["apt.releases.hashicorp.com", "releases.hashicorp.com", "github.com", "registry.terraform.io", "pypi.org"]
