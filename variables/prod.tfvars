@@ -8,6 +8,9 @@ tags = {
 }
 spoke1_resource_group_name = "Spoke1ResourceGroup"
 spoke1_vnet_name           = "spoke1Vnet"
+spoke1_address_space = ["10.1.0.0/16"]
+spoke1_subnet_address_prefixes= ["10.1.0.0/24"]
+
 
 // Dns spoke variables
 dns_subscription_id                       = "d41733f6-60ed-437f-bbb9-8bc2dc793277"

@@ -37,7 +37,6 @@ resource "azurerm_subnet" "dns_spoke_inbound_subnet" {
 # }
 
 resource "azurerm_virtual_network_peering" "hub_to_dns_spoke" {
-  provider                  = azurerm.dns_spoke
   name                      = format("%sTo%s", azurerm_virtual_network.hub_vnet.name, azurerm_virtual_network.dns_spoke_vnet.name)
   resource_group_name       = azurerm_resource_group.rg.name
   virtual_network_name      = azurerm_virtual_network.hub_vnet.name
