@@ -103,7 +103,7 @@ resource "azurerm_private_dns_resolver_inbound_endpoint" "example" {
 
 resource "azurerm_private_dns_zone" "example" {
   provider            = azurerm.dns_spoke
-  name                = "canadacentral.privatelink.azurecr.io"
+  name                = "privatelink.canadacentral.azmk8s.io"
   resource_group_name = azurerm_resource_group.dns_spoke_rg.name
 }
 
