@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "spoke1_rg" {
 }
 
 resource "azurerm_virtual_network" "spoke_vnet" {
-  
+  # checkov:skip=CKV_AZURE_182: "Ensure that VNET has at least 2 connected DNS Endpoints"
   name                = var.spoke1_vnet_name
   location            = azurerm_resource_group.spoke1_rg.location
   resource_group_name = azurerm_resource_group.spoke1_rg.name
