@@ -35,6 +35,7 @@ resource "azurerm_firewall" "fw" {
   resource_group_name = azurerm_resource_group.rg.name
   sku_tier            = "Standard"
   sku_name            = "AZFW_VNet"
+  
   ip_configuration {
     name                 = "configuration"
     subnet_id            = azurerm_subnet.firewall_subnet.id
@@ -50,6 +51,9 @@ resource "azurerm_firewall_policy" "policy" {
   name                = var.firewall_policy_name
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
+  dns {
+    proxy_enabled = true
+  }
   tags                = var.tags
 }
 
