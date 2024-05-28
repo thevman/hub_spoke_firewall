@@ -9,6 +9,7 @@ resource "azurerm_virtual_network" "spoke_vnet" {
   resource_group_name = azurerm_resource_group.spoke1_rg.name
   address_space       = var.spoke1_address_space
   dns_servers         = [azurerm_private_dns_resolver_inbound_endpoint.example.ip_configurations[0].private_ip_address, azurerm_private_dns_resolver_inbound_endpoint.example.ip_configurations[1].private_ip_address]
+  tags                = var.tags
 }
 
 resource "azurerm_subnet" "spoke_subnet" {
@@ -44,6 +45,7 @@ resource "azurerm_route_table" "rt" {
     next_hop_type          = "VirtualAppliance"
     next_hop_in_ip_address = azurerm_firewall.fw.ip_configuration[0].private_ip_address
   }
+  tags = var.tags
 }
 
 resource "azurerm_subnet_route_table_association" "a" {

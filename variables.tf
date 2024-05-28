@@ -96,3 +96,11 @@ variable "dns_spoke_inbound_subnet_address_prefixes" {
 #   type        = list(string)
 #   default     = ["10.2.1.0/24"]
 # }
+
+variable "tags" {
+  description = "A mapping of tags to assign to the resources"
+  type        = map(string)
+  default = {
+    Owner = "Vineet"
+  }
+}
