@@ -1,16 +1,21 @@
+resource "azurerm_resource_group" "spoke1_rg" {
+  name     = var.spoke1_resource_group_name
+  location = var.location
+}
+
 resource "azurerm_virtual_network" "spoke_vnet" {
-  name                = var.spoke_vnet_name
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  address_space       = var.spoke_address_space
+  name                = var.spoke1_vnet_name
+  location            = azurerm_resource_group.spoke1_rg.location
+  resource_group_name = azurerm_resource_group.spoke1_rg.name
+  address_space       = var.spoke1_address_space
 }
 
 resource "azurerm_subnet" "spoke_subnet" {
   # checkov:skip=CKV2_AZURE_31: "Ensure VNET subnet is configured with a Network Security Group (NSG)"
   name                 = "spoke1Subnet"
-  resource_group_name  = azurerm_resource_group.rg.name
+  resource_group_name  = azurerm_resource_group.spoke1_rg.name
   virtual_network_name = azurerm_virtual_network.spoke_vnet.name
-  address_prefixes     = var.spoke_subnet_address_prefixes
+  address_prefixes     = var.spoke1_subnet_address_prefixes
 }
 
 resource "azurerm_virtual_network_peering" "hub_to_spoke" {
@@ -22,15 +27,15 @@ resource "azurerm_virtual_network_peering" "hub_to_spoke" {
 
 resource "azurerm_virtual_network_peering" "spoke_to_hub" {
   name                      = format("%sTo%s", azurerm_virtual_network.spoke_vnet.name, azurerm_virtual_network.hub_vnet.name)
-  resource_group_name       = azurerm_resource_group.rg.name
+  resource_group_name       = azurerm_resource_group.spoke1_rg.name
   virtual_network_name      = azurerm_virtual_network.spoke_vnet.name
   remote_virtual_network_id = azurerm_virtual_network.hub_vnet.id
 }
 
 resource "azurerm_route_table" "rt" {
   name                = "myRouteTable"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.spoke1_rg.location
+  resource_group_name = azurerm_resource_group.spoke1_rg.name
 
   route {
     name                   = "myRoute"

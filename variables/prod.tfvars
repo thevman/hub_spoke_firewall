@@ -1,6 +1,8 @@
-resource_group_name = "myResourceGroup"
+resource_group_name = "HubResourceGroup"
 location            = "canadacentral"
 hub_vnet_name       = "hubVnet"
-spoke_vnet_name     = "spokeVnet"
 firewall_name       = "myFirewall"
 public_ip_name      = "myPublicIP"
+
+spoke1_resource_group_name = "Spoke1ResourceGroup"
+spoke1_vnet_name           = "spoke1Vnet"
