@@ -119,7 +119,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
       destination_ports     = ["*"]
       name                  = "k8s-runner-cc-01-Any"
       protocols             = ["Any"]
-      source_addresses      = ["VirtualNetwork"]
+      source_addresses      = ["*"]
     }
   }
 
