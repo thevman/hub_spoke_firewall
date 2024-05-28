@@ -41,7 +41,7 @@ resource "azurerm_firewall" "fw" {
     public_ip_address_id = azurerm_public_ip.firewall_pip.id
   }
   firewall_policy_id = azurerm_firewall_policy.policy.id
-  tags                = var.tags
+  tags               = var.tags
 }
 
 resource "azurerm_firewall_policy" "policy" {
@@ -50,7 +50,7 @@ resource "azurerm_firewall_policy" "policy" {
   name                = var.firewall_policy_name
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-tags                = var.tags
+  tags                = var.tags
 }
 
 resource "azurerm_firewall_policy_rule_collection_group" "example" {
