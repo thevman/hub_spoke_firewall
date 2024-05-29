@@ -157,6 +157,13 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
       protocols         = ["TCP"]
       source_addresses  = ["*"]
     }
+    rule {
+      destination_addresses = ["*"]
+      destination_ports     = ["53"]
+      name                  = "VM-runner-dns"
+      protocols             = ["TCP", "UDP"]
+      source_addresses      = ["*"]
+    }
     # rule {
     #   destination_fqdns = ["apt.releases.hashicorp.com", "releases.hashicorp.com", "github.com", "registry.terraform.io", "pypi.org"]
     #   destination_ports = ["22"]
