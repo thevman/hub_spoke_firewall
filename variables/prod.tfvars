@@ -5,6 +5,7 @@ firewall_name       = "myFirewall"
 public_ip_name      = "myPublicIP"
 tags = {
   "Owner" = "Vineet1"
+  "CostCenter" = "CC1"
 }
 spoke1_resource_group_name     = "Spoke1ResourceGroup"
 spoke1_vnet_name               = "spoke1Vnet"
