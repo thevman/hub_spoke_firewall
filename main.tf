@@ -67,9 +67,9 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
     priority = 500
     action   = "Allow"
     rule {
-      destination_fqdns = ["AzureKubernetesService"]
-      name              = "VM-runner-api-fqdn"
-      source_addresses  = ["*"]
+      destination_fqdn_tags = ["AzureKubernetesService"]
+      name                  = "VM-runner-api-fqdn"
+      source_addresses      = ["*"]
       protocols {
         port = 443
         type = "Https"
@@ -123,18 +123,18 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
     priority = 100
     action   = "Allow"
     rule {
-      destination_fqdns = ["AzureCloud.canadacentral"]
-      destination_ports = ["1194"]
-      name              = "VM-runner-apiudp"
-      protocols         = ["UDP"]
-      source_addresses  = ["*"]
+      destination_addresses = ["AzureCloud.canadacentral"]
+      destination_ports     = ["1194"]
+      name                  = "VM-runner-apiudp"
+      protocols             = ["UDP"]
+      source_addresses      = ["*"]
     }
     rule {
-      destination_fqdns = ["AzureCloud.canadacentral"]
-      destination_ports = ["9000"]
-      name              = "VM-runner-apitcp"
-      protocols         = ["TCP"]
-      source_addresses  = ["*"]
+      destination_addresses = ["AzureCloud.canadacentral"]
+      destination_ports     = ["9000"]
+      name                  = "VM-runner-apitcp"
+      protocols             = ["TCP"]
+      source_addresses      = ["*"]
     }
     rule {
       destination_fqdns = ["ntp.ubuntu.com"]
