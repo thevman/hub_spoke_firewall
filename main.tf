@@ -53,6 +53,7 @@ resource "azurerm_firewall_policy" "policy" {
   location            = azurerm_resource_group.rg.location
   dns {
     proxy_enabled = true
+    servers = [ azurerm_private_dns_resolver_inbound_endpoint.example.ip_configurations[0].private_ip_address ]
   }
   tags = var.tags
 }
