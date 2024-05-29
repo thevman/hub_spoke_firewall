@@ -145,14 +145,14 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
     }
     rule {
       destination_fqdns = ["ghcr.io", "pkg-containers.githubusercontent.com"]
-      destination_ports = ["123"]
+      destination_ports = ["443"]
       name              = "VM-runner-ghcr"
       protocols         = ["TCP"]
       source_addresses  = ["*"]
     }
     rule {
       destination_fqdns = ["docker.io", "registry-1.docker.io", "production.cloudflare.docker.com"]
-      destination_ports = ["123"]
+      destination_ports = ["443"]
       name              = "VM-runner-docker"
       protocols         = ["TCP"]
       source_addresses  = ["*"]
