@@ -21,6 +21,14 @@ resource "azurerm_subnet" "spoke_subnet" {
   address_prefixes     = var.spoke1_subnet_address_prefixes
 }
 
+resource "azurerm_subnet" "api_subnet" {
+  # checkov:skip=CKV2_AZURE_31: "Ensure VNET subnet is configured with a Network Security Group (NSG)"
+  name                 = "spoke1Subnet"
+  resource_group_name  = azurerm_resource_group.spoke1_rg.name
+  virtual_network_name = azurerm_virtual_network.spoke_vnet.name
+  address_prefixes     = var.spoke1_api_subnet_address_prefixes
+}
+
 resource "azurerm_virtual_network_peering" "hub_to_spoke" {
   name                      = format("%sTo%s", azurerm_virtual_network.hub_vnet.name, azurerm_virtual_network.spoke_vnet.name)
   resource_group_name       = azurerm_resource_group.rg.name
@@ -56,5 +64,9 @@ resource "azurerm_route_table" "rt" {
 
 resource "azurerm_subnet_route_table_association" "a" {
   subnet_id      = azurerm_subnet.spoke_subnet.id
+  route_table_id = azurerm_route_table.rt.id
+}
+resource "azurerm_subnet_route_table_association" "b" {
+  subnet_id      = azurerm_subnet.api_subnet.id
   route_table_id = azurerm_route_table.rt.id
 }

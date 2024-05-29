@@ -61,6 +61,12 @@ variable "spoke1_subnet_address_prefixes" {
   default     = ["10.1.0.0/24"]
 }
 
+variable "spoke1_api_subnet_address_prefixes" {
+  description = "Address prefixes for the spoke subnet"
+  type        = list(string)
+  default     = ["10.1.1.0/24"]
+}
+
 // DNS Spoke variables
 variable "dns_subscription_id" {
   description = "The subscription ID for the DNS spoke"
