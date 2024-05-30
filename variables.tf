@@ -68,11 +68,11 @@ variable "spoke1_api_subnet_address_prefixes" {
 }
 
 // DNS Spoke variables
-# variable "dns_subscription_id" {
-#   description = "The subscription ID for the DNS spoke"
-#   type        = string
+variable "dns_subscription_id" {
+  description = "The subscription ID for the DNS spoke"
+  type        = string
 
-# }
+}
 # variable "dns_spoke_resource_group_name" {
 #   description = "The name of the spoke resource group"
 #   default     = "mydns_spokeResourceGroup"
