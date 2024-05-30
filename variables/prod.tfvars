@@ -17,7 +17,7 @@ spoke1_address_space           = ["10.1.0.0/16"]
 spoke1_subnet_address_prefixes = ["10.1.0.0/24"]
 
 # // Dns spoke variables
-dns_subscription_id = "d41733f6-60ed-437f-bbb9-8bc2dc793277"
+# dns_subscription_id = "d41733f6-60ed-437f-bbb9-8bc2dc793277"
 # dns_spoke_resource_group_name             = "dns_spoke_rg"
 # dns_spoke_vnet_name                       = "dns_spoke_vnet"
 # dns_spoke_address_space                   = ["10.2.0.0/16"]
