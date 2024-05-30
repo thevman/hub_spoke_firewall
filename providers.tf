@@ -16,10 +16,3 @@ provider "azurerm" {
   skip_provider_registration = true
   use_oidc                   = true
 }
-provider "azurerm" {
-  features {}
-  alias                      = "dns_spoke"
-  subscription_id            = var.dns_subscription_id
-  skip_provider_registration = true
-  use_oidc                   = true
-}
