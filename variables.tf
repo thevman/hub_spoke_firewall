@@ -73,23 +73,23 @@ variable "dns_subscription_id" {
   type        = string
 
 }
-variable "dns_spoke_resource_group_name" {
-  description = "The name of the spoke resource group"
-  default     = "mydns_spokeResourceGroup"
-  type        = string
-}
-variable "dns_spoke_vnet_name" {
-  description = "The name of the spoke virtual network"
-  default     = "spokeVnet"
-  type        = string
-}
+# variable "dns_spoke_resource_group_name" {
+#   description = "The name of the spoke resource group"
+#   default     = "mydns_spokeResourceGroup"
+#   type        = string
+# }
+# variable "dns_spoke_vnet_name" {
+#   description = "The name of the spoke virtual network"
+#   default     = "spokeVnet"
+#   type        = string
+# }
 
 
-variable "dns_spoke_address_space" {
-  description = "Address space for the spoke virtual network"
-  type        = list(string)
-  default     = ["10.2.0.0/16"]
-}
+# variable "dns_spoke_address_space" {
+#   description = "Address space for the spoke virtual network"
+#   type        = list(string)
+#   default     = ["10.2.0.0/16"]
+# }
 
 variable "dns_spoke_inbound_subnet_address_prefixes" {
   description = "Address prefixes for the spoke subnet"
