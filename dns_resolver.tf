@@ -1,10 +1,10 @@
-resource "azurerm_subnet" "dns_spoke_subnet" {
-  # checkov:skip=CKV2_AZURE_31: "Ensure VNET subnet is configured with a Network Security Group (NSG)"
-  name                 = "dnsSubnet"
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.hub_vnet.name
-  address_prefixes     = ["10.0.2.0/24"]
-}
+# resource "azurerm_subnet" "dns_spoke_subnet" {
+#   # checkov:skip=CKV2_AZURE_31: "Ensure VNET subnet is configured with a Network Security Group (NSG)"
+#   name                 = "dnsSubnet"
+#   resource_group_name  = azurerm_resource_group.rg.name
+#   virtual_network_name = azurerm_virtual_network.hub_vnet.name
+#   address_prefixes     = ["10.0.2.0/24"]
+# }
 
 resource "azurerm_subnet" "dns_spoke_inbound_subnet" {
   # checkov:skip=CKV2_AZURE_31: "Ensure VNET subnet is configured with a Network Security Group (NSG)"
@@ -12,7 +12,7 @@ resource "azurerm_subnet" "dns_spoke_inbound_subnet" {
   name                 = "InboundSubnet"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.hub_vnet.name
-  address_prefixes     = var.dns_spoke_inbound_subnet_address_prefixes
+  address_prefixes     = var.dns_subnet_address_prefixes
   delegation {
     name = "Microsoft.Network.dnsResolvers"
     service_delegation {

@@ -36,6 +36,12 @@ variable "firewall_policy_name" {
 
 }
 
+variable "firewall_subnet_address_prefixes" {
+  description = "Address prefixes for the firewall subnet"
+  type        = list(string)
+  default     = []
+
+}
 // Spoke variables
 variable "spoke1_resource_group_name" {
   description = "The name of the spoke resource group"
@@ -91,7 +97,7 @@ variable "dns_subscription_id" {
 #   default     = ["10.2.0.0/16"]
 # }
 
-variable "dns_spoke_inbound_subnet_address_prefixes" {
+variable "dns_subnet_address_prefixes" {
   description = "Address prefixes for the spoke subnet"
   type        = list(string)
   default     = ["10.2.0.0/24"]
