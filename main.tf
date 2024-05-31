@@ -80,7 +80,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
       }
     }
     rule {
-      destination_fqdns = ["github.com", "api.github.com", "*.actions.githubusercontent.com", "codeload.github.com", "ghcr.io", "*.actions.githubusercontent.com", "results-receiver.actions.githubusercontent.com", "*.blob.core.windows.net", "objects.githubusercontent.com", "objects-origin.githubusercontent.com", "github-releases.githubusercontent.com", "github-registry-files.githubusercontent.com", "*.actions.githubusercontent.com", "*.pkg.github.com", "ghcr.io", "github-cloud.githubusercontent.com", "github-cloud.s3.amazonaws.com", ]
+      destination_fqdns = ["github.com", "api.github.com", "*.actions.githubusercontent.com", "codeload.github.com", "ghcr.io", "*.actions.githubusercontent.com", "results-receiver.actions.githubusercontent.com", "*.blob.core.windows.net", "objects.githubusercontent.com", "objects-origin.githubusercontent.com", "github-releases.githubusercontent.com", "github-registry-files.githubusercontent.com", "*.actions.githubusercontent.com", "*.pkg.github.com", "ghcr.io", "github-cloud.githubusercontent.com", "github-cloud.s3.amazonaws.com", "*.blobstorage.azure.net", "motd.ubuntu.com"]
       name              = "VM-runner-github-fqdn"
       source_addresses  = var.spoke1_subnet_address_prefixes
       protocols {
