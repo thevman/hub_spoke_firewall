@@ -81,26 +81,26 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
     }
     rule {
       destination_fqdns = [
-      "github.com", 
-      "api.github.com", 
-      "codeload.github.com", 
-      "*.pkg.github.com", 
-      "ghcr.io", 
-      "*.actions.githubusercontent.com", 
-      "*.actions.githubusercontent.com", 
-      "results-receiver.actions.githubusercontent.com", 
-      "objects.githubusercontent.com", 
-      "objects-origin.githubusercontent.com", 
-      "github-releases.githubusercontent.com", 
-      "github-registry-files.githubusercontent.com", 
-      "*.actions.githubusercontent.com", 
-      "github-cloud.githubusercontent.com", 
-      "github-cloud.s3.amazonaws.com", 
-      "*.blob.core.windows.net", 
-      "*.blobstorage.azure.net", 
+        "github.com",
+        "api.github.com",
+        "codeload.github.com",
+        "*.pkg.github.com",
+        "ghcr.io",
+        "*.actions.githubusercontent.com",
+        "*.actions.githubusercontent.com",
+        "results-receiver.actions.githubusercontent.com",
+        "objects.githubusercontent.com",
+        "objects-origin.githubusercontent.com",
+        "github-releases.githubusercontent.com",
+        "github-registry-files.githubusercontent.com",
+        "*.actions.githubusercontent.com",
+        "github-cloud.githubusercontent.com",
+        "github-cloud.s3.amazonaws.com",
+        "*.blob.core.windows.net",
+        "*.blobstorage.azure.net",
       "motd.ubuntu.com"]
-      name              = "VM-runner-github-fqdn"
-      source_addresses  = var.spoke1_subnet_address_prefixes
+      name             = "VM-runner-github-fqdn"
+      source_addresses = var.spoke1_subnet_address_prefixes
       protocols {
         port = 443
         type = "Https"

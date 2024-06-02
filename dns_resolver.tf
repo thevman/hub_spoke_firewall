@@ -28,6 +28,7 @@ resource "azurerm_private_dns_resolver" "test" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   virtual_network_id  = azurerm_virtual_network.hub_vnet.id
+  tags                = var.tags
 }
 
 resource "azurerm_private_dns_resolver_inbound_endpoint" "example" {
@@ -39,6 +40,7 @@ resource "azurerm_private_dns_resolver_inbound_endpoint" "example" {
     private_ip_allocation_method = "Dynamic"
     subnet_id                    = azurerm_subnet.dns_spoke_inbound_subnet.id
   }
+  tags = var.tags
   # ip_configurations {
   #   private_ip_allocation_method = "Dynamic"
   #   subnet_id                    = azurerm_subnet.dns_spoke_inbound_subnet.id
