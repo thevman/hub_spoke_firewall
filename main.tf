@@ -87,7 +87,6 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
         "*.pkg.github.com",
         "ghcr.io",
         "*.actions.githubusercontent.com",
-        "*.actions.githubusercontent.com",
         "results-receiver.actions.githubusercontent.com",
         "objects.githubusercontent.com",
         "objects-origin.githubusercontent.com",
@@ -98,7 +97,8 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
         "github-cloud.s3.amazonaws.com",
         "*.blob.core.windows.net",
         "*.blobstorage.azure.net",
-      "motd.ubuntu.com"]
+        "motd.ubuntu.com"
+      ]
       name             = "VM-runner-github-fqdn"
       source_addresses = var.spoke1_subnet_address_prefixes
       protocols {
