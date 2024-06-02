@@ -152,7 +152,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
       source_addresses  = var.spoke1_subnet_address_prefixes
     }
     rule {
-      destination_fqdns = ["sms-runner-cluster-01-48bqwt4t.hcp.canadacentral.azmk8s.io"]
+      destination_fqdns = ["sms-runner-cluster-01-4y1qb0sl.hcp.canadacentral.azmk8s.io"]
       destination_ports = ["443", "80"]
       name              = "VM-runner-apihttp"
       protocols         = ["TCP"]
