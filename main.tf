@@ -70,7 +70,6 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
       destination_fqdn_tags = ["AzureKubernetesService"]
       name                  = "VM-runner-api-fqdn"
       source_addresses      = var.spoke1_subnet_address_prefixes
-      terminate_tls         = true
       protocols {
         port = 443
         type = "Https"
@@ -152,13 +151,13 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
       protocols         = ["TCP"]
       source_addresses  = var.spoke1_subnet_address_prefixes
     }
-    # rule {
-    #   destination_fqdns = ["sms-runner-cluster-01-48bqwt4t.hcp.canadacentral.azmk8s.io"]
-    #   destination_ports = ["443", "80"]
-    #   name              = "VM-runner-apihttp"
-    #   protocols         = ["TCP"]
-    #   source_addresses  = var.spoke1_subnet_address_prefixes
-    # }
+    rule {
+      destination_fqdns = ["sms-runner-cluster-01-48bqwt4t.hcp.canadacentral.azmk8s.io"]
+      destination_ports = ["443", "80"]
+      name              = "VM-runner-apihttp"
+      protocols         = ["TCP"]
+      source_addresses  = var.spoke1_subnet_address_prefixes
+    }
     rule {
       destination_addresses = ["*"]
       destination_ports     = ["53"]
