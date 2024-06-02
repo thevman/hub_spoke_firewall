@@ -70,7 +70,7 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
       destination_fqdn_tags = ["AzureKubernetesService"]
       name                  = "VM-runner-api-fqdn"
       source_addresses      = var.spoke1_subnet_address_prefixes
-      terminate_tls = true
+      terminate_tls         = true
       protocols {
         port = 443
         type = "Https"
