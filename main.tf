@@ -145,6 +145,13 @@ resource "azurerm_firewall_policy_rule_collection_group" "example" {
       source_addresses  = var.spoke1_subnet_address_prefixes
     }
     rule {
+      destination_fqdns = ["github.com"]
+      destination_ports = ["22"]
+      name              = "VM-runner-ssh"
+      protocols         = ["TCP"]
+      source_addresses  = var.spoke1_subnet_address_prefixes
+    }
+    rule {
       destination_fqdns = ["docker.io", "registry-1.docker.io", "production.cloudflare.docker.com"]
       destination_ports = ["443"]
       name              = "VM-runner-docker"
